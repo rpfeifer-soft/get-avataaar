@@ -20,6 +20,10 @@
   "author": "René Pfeifer",
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.29.1"
+    "canvas": "^2.6.1",
+    "canvg": "^3.0.7",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "xmldom": "^0.4.0"
   }
 }
