@@ -1,16 +1,16 @@
 {
-  "name": "update-strato-ip",
+  "name": "get-avataar",
   "version": "1.0.0",
-  "description": "Updates the IP address of strato domain to current machine.",
+  "description": "Get an avatar in format png.",
   "main": "index.js",
   "type": "module",
-  "appid": "ipsync",
-  "title": "Update Strato-IP",
+  "appid": "avatar",
+  "title": "Get Avataar",
   "dockerAccount": "rpfeifer/team-manager",
   "prodServer": "iserver.local",
   "prodBase": "Desktop/UpdateStratoIP",
   "githubAccount": "https://github.com/rpfeifer-soft",
- "scripts": {
+  "scripts": {
     "start": "node index.js",
     "publish": "docker build . --file Dockerfile --no-cache --tag ${npm_package_dockerAccount}:${npm_package_appid} && docker push ${npm_package_dockerAccount}:${npm_package_appid}",
     "scp": "scp -r ./secrets.js rpfeifer@${npm_package_prodServer}:${npm_package_prodBase}/secrets.js",
@@ -20,9 +20,6 @@
   "author": "René Pfeifer",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.0",
-    "dns": "^0.2.2",
-    "http": "0.0.1-security",
     "moment": "^2.29.1"
   }
 }
