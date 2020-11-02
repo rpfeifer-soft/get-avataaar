@@ -1,14 +1,11 @@
-# Update Strato-IP
+# Get Avataar
 
-Docker application to sync current public IP with a given Domain hosted by Strato!
+Docker application to serve avataar images in png format.
 
 ## Usage
 
 Provide options via secrets.js
 
     export default {
-       // The domain to update
-       domain: ...,
-       // The dyndns-password to use
-       password: ...
+
     }
