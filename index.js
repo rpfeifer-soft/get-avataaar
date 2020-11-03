@@ -46,12 +46,12 @@ async function start() {
       "Default",
       "Turban",
       "Blank",
-      "Auburn",
       "BeardLight",
       "BlazerShirt",
       "Close",
       "Angry",
       "Concerned",
+      "Auburn",
       "Black",
       "Auburn",
       "Black"

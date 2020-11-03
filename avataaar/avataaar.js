@@ -58,12 +58,12 @@ export default class Avataaar {
       noseType,
       topType,
       accessoriesType,
-      hairColor,
       facialHairType,
       clotheType,
       eyeType,
       eyebrowType,
       mouthType,
+      hairColor,
       skinColor,
       facialHairColor,
       hatColor
@@ -72,12 +72,12 @@ export default class Avataaar {
          noseType,
          topType,
          accessoriesType,
-         hairColor,
          facialHairType,
          clotheType,
          eyeType,
          eyebrowType,
          mouthType,
+         hairColor,
          skinColor,
          facialHairColor,
          hatColor,
@@ -88,12 +88,12 @@ export default class Avataaar {
       this.noseType = noseTypes[noseType];
       this.topType = topTypes[topType];
       this.accessoriesType = accessoriesTypes[accessoriesType];
-      this.colors["--avataaar-hair-color"] = Avataaar.hairColors[hairColor];
       this.facialHairType = facialHairTypes[facialHairType];
       this.clotheType = clothesType[clotheType];
       this.eyeType = eyeTypes[eyeType];
       this.eyebrowType = eyebrowTypes[eyebrowType];
       this.mouthType = mouthTypes[mouthType];
+      this.colors["--avataaar-hair-color"] = Avataaar.hairColors[hairColor];
       this.colors["--avataaar-skin-color"] = Avataaar.skinColors[skinColor];
       this.colors["--avataaar-facial-hair-color"] = Avataaar.hairColors[facialHairColor];
       this.colors["--avataaar-hat-color"] = Avataaar.hatColors[hatColor];
@@ -115,22 +115,22 @@ export default class Avataaar {
             keys = Object.keys(accessoriesTypes);
             break;
          case 3:
-            keys = Object.keys(Avataaar.hairColors);
-            break;
-         case 4:
             keys = Object.keys(facialHairTypes);
             break;
-         case 5:
+         case 4:
             keys = Object.keys(clothesType);
             break;
-         case 6:
+         case 5:
             keys = Object.keys(eyeTypes);
             break;
-         case 7:
+         case 6:
             keys = Object.keys(eyebrowTypes);
             break;
-         case 8:
+         case 7:
             keys = Object.keys(mouthTypes);
+            break;
+         case 8:
+            keys = Object.keys(Avataaar.hairColors);
             break;
          case 9:
             keys = Object.keys(Avataaar.skinColors);
@@ -179,12 +179,12 @@ export default class Avataaar {
          this.randomOption(noseTypes),
          this.randomOption(topTypes),
          this.randomOption(accessoriesTypes),
-         this.randomOption(Avataaar.hairColors),
          this.randomOption(facialHairTypes),
          this.randomOption(clothesType),
          this.randomOption(eyeTypes),
          this.randomOption(eyebrowTypes),
          this.randomOption(mouthTypes),
+         this.randomOption(Avataaar.hairColors),
          this.randomOption(Avataaar.skinColors),
          this.randomOption(Avataaar.hairColors),
          this.randomOption(Avataaar.hatColors)
