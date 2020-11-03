@@ -1,12 +1,12 @@
-import Random from "./svg-js/random.js";
-import { accessoriesTypes } from "./svg-js/accessories.js";
-import { facialHairTypes } from "./svg-js/facial-hair.js";
-import { topTypes } from "./svg-js/top.js";
-import { mouthTypes } from "./svg-js/mouth.js";
-import { clothesType } from "./svg-js/clothes.js";
-import { eyeTypes } from "./svg-js/eyes.js";
-import { eyebrowTypes } from "./svg-js/eyebrows.js";
-import { noseTypes } from "./svg-js/nose.js";
+import Random from "./avataar/random.js";
+import { accessoriesTypes } from "./avataar/accessories.js";
+import { facialHairTypes } from "./avataar/facial-hair.js";
+import { topTypes } from "./avataar/top.js";
+import { mouthTypes } from "./avataar/mouth.js";
+import { clothesType } from "./avataar/clothes.js";
+import { eyeTypes } from "./avataar/eyes.js";
+import { eyebrowTypes } from "./avataar/eyebrows.js";
+import { noseTypes } from "./avataar/nose.js";
 
 export default class Avataaar {
    static get hatColors() {
