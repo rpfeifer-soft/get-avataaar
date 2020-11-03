@@ -9,6 +9,7 @@ function log(msg) {
 }
 
 async function svgFunction(req, res, svg) {
+   log(req.url);
    if (req.params.type == "svg") {
       res.contentType("image/svg+xml");
       res.send(svg);
