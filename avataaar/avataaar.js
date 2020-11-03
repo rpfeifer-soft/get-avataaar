@@ -3,13 +3,32 @@ import { accessoriesTypes } from "./accessories.js";
 import { facialHairTypes } from "./facial-hair.js";
 import { topTypes } from "./top.js";
 import { mouthTypes } from "./mouth.js";
-import { clothesType } from "./clothes.js";
+import { clothesTypes } from "./clothes.js";
 import { eyeTypes } from "./eyes.js";
 import { eyebrowTypes } from "./eyebrows.js";
 import { noseTypes } from "./nose.js";
 
 export default class Avataaar {
    static get hatColors() {
+      return {
+         Black: "#262E33",
+         Blue01: "#65C9FF",
+         Blue02: "#5199E4",
+         Blue03: "#25557C",
+         Gray01: "#E6E6E6",
+         Gray02: "#929598",
+         Heather: "#3C4F5C",
+         PastelBlue: "#B1E2FF",
+         PastelGreen: "#A7FFC4",
+         PastelOrange: "#FFDEB5",
+         PastelRed: "#FFAFB9",
+         PastelYellow: "#FFFFB1",
+         Pink: "#FF488E",
+         Red: "#FF5C5C",
+         White: "#FFFFFF",
+      };
+   }
+   static get shirtColors() {
       return {
          Black: "#262E33",
          Blue01: "#65C9FF",
@@ -42,6 +61,20 @@ export default class Avataaar {
          SilverGray: "#E8E1E1",
       };
    }
+   static get facialHairColors() {
+      return {
+         Auburn: "#A55728",
+         Black: "#2C1B18",
+         Blonde: "#B58143",
+         BlondeGolden: "#D6B370",
+         Brown: "#724133",
+         BrownDark: "#4A312C",
+         PastelPink: "#F59797",
+         Platinum: "#ECDCBF",
+         Red: "#C93305",
+         SilverGray: "#E8E1E1",
+      };
+   }
    static get skinColors() {
       return {
          Tanned: "#FD9841",
@@ -59,21 +92,22 @@ export default class Avataaar {
       topType,
       accessoriesType,
       facialHairType,
-      clotheType,
+      clothesType,
       eyeType,
       eyebrowType,
       mouthType,
       hairColor,
       skinColor,
       facialHairColor,
-      hatColor
+      hatColor,
+      shirtColor
    ) {
       this.state = [
          noseType,
          topType,
          accessoriesType,
          facialHairType,
-         clotheType,
+         clothesType,
          eyeType,
          eyebrowType,
          mouthType,
@@ -81,22 +115,24 @@ export default class Avataaar {
          skinColor,
          facialHairColor,
          hatColor,
+         shirtColor,
       ];
-      this.colors = {};
-      this.colors["--avataaar-internal-circle-color"] = "#6fb8e0";
-
       this.noseType = noseTypes[noseType];
       this.topType = topTypes[topType];
       this.accessoriesType = accessoriesTypes[accessoriesType];
       this.facialHairType = facialHairTypes[facialHairType];
-      this.clotheType = clothesType[clotheType];
+      this.clothesType = clothesTypes[clothesType];
       this.eyeType = eyeTypes[eyeType];
       this.eyebrowType = eyebrowTypes[eyebrowType];
       this.mouthType = mouthTypes[mouthType];
+
+      this.colors = {};
+      this.colors["--avataaar-internal-circle-color"] = "#6fb8e0";
       this.colors["--avataaar-hair-color"] = Avataaar.hairColors[hairColor];
       this.colors["--avataaar-skin-color"] = Avataaar.skinColors[skinColor];
-      this.colors["--avataaar-facial-hair-color"] = Avataaar.hairColors[facialHairColor];
+      this.colors["--avataaar-facial-hair-color"] = Avataaar.facialHairColors[facialHairColor];
       this.colors["--avataaar-hat-color"] = Avataaar.hatColors[hatColor];
+      this.colors["--avataaar-shirt-color"] = Avataaar.shirtColors[shirtColor];
    }
 
    next(what) {
@@ -118,7 +154,7 @@ export default class Avataaar {
             keys = Object.keys(facialHairTypes);
             break;
          case 4:
-            keys = Object.keys(clothesType);
+            keys = Object.keys(clothesTypes);
             break;
          case 5:
             keys = Object.keys(eyeTypes);
@@ -136,10 +172,13 @@ export default class Avataaar {
             keys = Object.keys(Avataaar.skinColors);
             break;
          case 10:
-            keys = Object.keys(Avataaar.hairColors);
+            keys = Object.keys(Avataaar.facialHairColors);
             break;
          case 11:
             keys = Object.keys(Avataaar.hatColors);
+            break;
+         case 12:
+            keys = Object.keys(Avataaar.shirtColors);
             break;
       }
       keys.sort();
@@ -180,14 +219,15 @@ export default class Avataaar {
          this.randomOption(topTypes),
          this.randomOption(accessoriesTypes),
          this.randomOption(facialHairTypes),
-         this.randomOption(clothesType),
+         this.randomOption(clothesTypes),
          this.randomOption(eyeTypes),
          this.randomOption(eyebrowTypes),
          this.randomOption(mouthTypes),
          this.randomOption(Avataaar.hairColors),
          this.randomOption(Avataaar.skinColors),
-         this.randomOption(Avataaar.hairColors),
-         this.randomOption(Avataaar.hatColors)
+         this.randomOption(Avataaar.facialHairColors),
+         this.randomOption(Avataaar.hatColors),
+         this.randomOption(Avataaar.shirtColors)
       );
    }
 
@@ -277,7 +317,7 @@ export default class Avataaar {
                     mask='url(#mask-silhouette)'
                   />
                 </g>
-                ${this.clotheType}
+                ${this.clothesType}
                 ${this.eyebrowType}
                 ${this.eyeType}
                 ${this.mouthType}

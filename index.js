@@ -3,32 +3,17 @@ import moment from "moment";
 import Avataaar from "./avataaar/avataaar.js";
 import fs from "fs";
 
-import XMLDOM from "xmldom/lib/dom-parser.js";
-import CANVAS from "canvas";
-import FETCH from "node-fetch";
-import CANVG from "canvg";
+import svg2png from "./svg2png.js";
 
 function log(msg) {
    console.log(moment().format("DD.MM. HH:mm:ss.SSS") + ":", msg);
 }
 
 log(`Waiting to serve avataars`);
-
+let size = 512;
 async function convert(svg, out) {
-   const preset = CANVG.presets.node({
-      DOMParser: XMLDOM.DOMParser,
-      canvas: CANVAS,
-      fetch: FETCH,
-   });
-
-   const canvas = preset.createCanvas(512, 512);
-   const ctx = canvas.getContext("2d");
-   const v = CANVG.Canvg.fromString(ctx, svg, preset);
-
    try {
-      await v.render();
-
-      const png = canvas.toBuffer();
+      const png = await svg2png(svg, size, size);
 
       fs.writeFileSync(out, png);
    } catch {}
@@ -47,18 +32,19 @@ async function start() {
       "Turban",
       "Blank",
       "BeardLight",
-      "BlazerShirt",
+      "GraphicShirtBat",
       "Close",
       "Angry",
       "Concerned",
       "Auburn",
       "Black",
       "Auburn",
+      "Black",
       "Black"
    );
    let svg = avatar.render();
    fs.writeFileSync("test/test.svg", svg);
-   let test = 11;
+   let test = 12;
    let index = 1;
    let next = false;
    while ((next = avatar.next(test))) {
@@ -70,10 +56,10 @@ async function start() {
 
       html += `<tr>
       <td>
-      <img src="test/test${index}.svg" width="512" height="512"/>
+      <img src="test/test${index}.svg" width="${size}" height="${size}"/>
    </td>
    <td>
-      <img src="test/test${index}.png" width="512" height="512"/>
+      <img src="test/test${index}.png" width="${size}" height="${size}"/>
    </td><td>${which}</td></tr>
 `;
       index++;
