@@ -1,12 +1,12 @@
-import Random from "./avataar/random.js";
-import { accessoriesTypes } from "./avataar/accessories.js";
-import { facialHairTypes } from "./avataar/facial-hair.js";
-import { topTypes } from "./avataar/top.js";
-import { mouthTypes } from "./avataar/mouth.js";
-import { clothesType } from "./avataar/clothes.js";
-import { eyeTypes } from "./avataar/eyes.js";
-import { eyebrowTypes } from "./avataar/eyebrows.js";
-import { noseTypes } from "./avataar/nose.js";
+import Random from "./random.js";
+import { accessoriesTypes } from "./accessories.js";
+import { facialHairTypes } from "./facial-hair.js";
+import { topTypes } from "./top.js";
+import { mouthTypes } from "./mouth.js";
+import { clothesType } from "./clothes.js";
+import { eyeTypes } from "./eyes.js";
+import { eyebrowTypes } from "./eyebrows.js";
+import { noseTypes } from "./nose.js";
 
 export default class Avataaar {
    static get hatColors() {
