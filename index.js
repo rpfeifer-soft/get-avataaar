@@ -1,6 +1,6 @@
 import secrets from "./secrets.js";
 import moment from "moment";
-import Avataaar from "./avataar/avataaar.js";
+import Avataaar from "./avataaar/avataaar.js";
 import fs from "fs";
 
 import XMLDOM from "xmldom/lib/dom-parser.js";
