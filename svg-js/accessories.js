@@ -1,5 +1,5 @@
 const use_filters = false;
-const filter1 = use_filters ? `filter='url("#filter1")'` : '';
+const filter1 = use_filters ? `filter='url("#filter1")'` : "";
 
 const Blank = `
 `;
@@ -437,11 +437,11 @@ const Wayfarers = `
 `;
 
 export const accessoriesTypes = {
-  Blank: Blank,
-  Kurt: Kurt,
-  Prescription01: Prescription01,
-  Prescription02: Prescription02,
-  Round: Round,
-  Sunglasses: Sunglasses,
-  Wayfarers: Wayfarers
+   Blank: Blank,
+   Kurt: Kurt,
+   Prescription01: Prescription01,
+   Prescription02: Prescription02,
+   Round: Round,
+   Sunglasses: Sunglasses,
+   Wayfarers: Wayfarers,
 };

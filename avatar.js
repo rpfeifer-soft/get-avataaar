@@ -8,67 +8,53 @@ import { eyeTypes } from "./svg-js/eyes.js";
 import { eyebrowTypes } from "./svg-js/eyebrows.js";
 import { noseTypes } from "./svg-js/nose.js";
 
-export default class Avataaar  {
-  static get hatColors() {
-  return {
-      Black: "#262E33",
-      Blue01: "#65C9FF",
-      Blue02: "#5199E4",
-      Blue03: "#25557C",
-      Gray01: "#E6E6E6",
-      Gray02: "#929598",
-      Heather: "#3C4F5C",
-      PastelBlue: "#B1E2FF",
-      PastelGreen: "#A7FFC4",
-      PastelOrange: "#FFDEB5",
-      PastelRed: "#FFAFB9",
-      PastelYellow: "#FFFFB1",
-      Pink: "#FF488E",
-      Red: "#FF5C5C",
-      White: "#FFFFFF"
-    };
-  }
-  static get hairColors() {
-    return {
-      Auburn: "#A55728",
-      Black: "#2C1B18",
-      Blonde: "#B58143",
-      BlondeGolden: "#D6B370",
-      Brown: "#724133",
-      BrownDark: "#4A312C",
-      PastelPink: "#F59797",
-      Platinum: "#ECDCBF",
-      Red: "#C93305",
-      SilverGray: "#E8E1E1"
-    };
-  }
-  static get skinColors() {
-    return {
-      Tanned: "#FD9841",
-      Yellow: "#F8D25C",
-      Pale: "#FFDBB4",
-      Light: "#EDB98A",
-      Brown: "#D08B5B",
-      DarkBrown: "#AE5D29",
-      Black: "#614335"
-    };
-  }
+export default class Avataaar {
+   static get hatColors() {
+      return {
+         Black: "#262E33",
+         Blue01: "#65C9FF",
+         Blue02: "#5199E4",
+         Blue03: "#25557C",
+         Gray01: "#E6E6E6",
+         Gray02: "#929598",
+         Heather: "#3C4F5C",
+         PastelBlue: "#B1E2FF",
+         PastelGreen: "#A7FFC4",
+         PastelOrange: "#FFDEB5",
+         PastelRed: "#FFAFB9",
+         PastelYellow: "#FFFFB1",
+         Pink: "#FF488E",
+         Red: "#FF5C5C",
+         White: "#FFFFFF",
+      };
+   }
+   static get hairColors() {
+      return {
+         Auburn: "#A55728",
+         Black: "#2C1B18",
+         Blonde: "#B58143",
+         BlondeGolden: "#D6B370",
+         Brown: "#724133",
+         BrownDark: "#4A312C",
+         PastelPink: "#F59797",
+         Platinum: "#ECDCBF",
+         Red: "#C93305",
+         SilverGray: "#E8E1E1",
+      };
+   }
+   static get skinColors() {
+      return {
+         Tanned: "#FD9841",
+         Yellow: "#F8D25C",
+         Pale: "#FFDBB4",
+         Light: "#EDB98A",
+         Brown: "#D08B5B",
+         DarkBrown: "#AE5D29",
+         Black: "#614335",
+      };
+   }
 
-  properties(
-    noseType,
-    topType,
-    accessoriesType,
-    hairColor,
-    facialHairType,
-    clotheType,
-    eyeType,
-    eyebrowType,
-    mouthType,
-    skinColor,
-    facialHairColor,
-    hatColor
-  ) {
-    this.state = [
+   properties(
       noseType,
       topType,
       accessoriesType,
@@ -80,114 +66,147 @@ export default class Avataaar  {
       mouthType,
       skinColor,
       facialHairColor,
-      hatColor  
-    ];
-    this.colors = {};
-    this.colors["--avataaar-internal-circle-color"] =
-      "#6fb8e0";
+      hatColor
+   ) {
+      this.state = [
+         noseType,
+         topType,
+         accessoriesType,
+         hairColor,
+         facialHairType,
+         clotheType,
+         eyeType,
+         eyebrowType,
+         mouthType,
+         skinColor,
+         facialHairColor,
+         hatColor,
+      ];
+      this.colors = {};
+      this.colors["--avataaar-internal-circle-color"] = "#6fb8e0";
 
-    this.noseType = noseTypes[noseType];
-    this.topType = topTypes[topType];
-    this.accessoriesType = accessoriesTypes[accessoriesType];
-    this.colors["--avataaar-hair-color"] = Avataaar.hairColors[hairColor];
-    this.facialHairType = facialHairTypes[facialHairType];
-    this.clotheType = clothesType[clotheType];
-    this.eyeType = eyeTypes[eyeType];
-    this.eyebrowType = eyebrowTypes[eyebrowType];
-    this.mouthType = mouthTypes[mouthType];
-    this.colors["--avataaar-skin-color"] = Avataaar.skinColors[skinColor];
-    this.colors["--avataaar-facial-hair-color"] = Avataaar.hairColors[facialHairColor];
-    this.colors["--avataaar-hat-color"] = Avataaar.hatColors[hatColor];
-  }
+      this.noseType = noseTypes[noseType];
+      this.topType = topTypes[topType];
+      this.accessoriesType = accessoriesTypes[accessoriesType];
+      this.colors["--avataaar-hair-color"] = Avataaar.hairColors[hairColor];
+      this.facialHairType = facialHairTypes[facialHairType];
+      this.clotheType = clothesType[clotheType];
+      this.eyeType = eyeTypes[eyeType];
+      this.eyebrowType = eyebrowTypes[eyebrowType];
+      this.mouthType = mouthTypes[mouthType];
+      this.colors["--avataaar-skin-color"] = Avataaar.skinColors[skinColor];
+      this.colors["--avataaar-facial-hair-color"] = Avataaar.hairColors[facialHairColor];
+      this.colors["--avataaar-hat-color"] = Avataaar.hatColors[hatColor];
+   }
 
-  next(what) {
-    if(!this.state) {
-      return false;
-    }
-    let keys = [];
-    switch(what) {
-      case 0: keys = Object.keys(noseTypes); break;
-      case 1: keys = Object.keys(topTypes); break;
-      case 2: keys = Object.keys(accessoriesTypes); break;
-      case 3: keys = Object.keys(Avataaar.hairColors); break;
-      case 4: keys = Object.keys(facialHairTypes); break;
-      case 5: keys = Object.keys(clothesType); break;
-      case 6: keys = Object.keys(eyeTypes); break;
-      case 7: keys = Object.keys(eyebrowTypes); break;
-      case 8: keys = Object.keys(mouthTypes); break;
-      case 9: keys = Object.keys(Avataaar.skinColors); break;
-      case 10: keys = Object.keys(Avataaar.hairColors); break;
-      case 11: keys = Object.keys(Avataaar.hatColors); break;
-    }
-    keys.sort();
-    let index = keys.indexOf(this.state[what]);
-    if(keys.length == 0 || index == -1 || index >= keys.length - 1) {
-      return false;
-    }
-    let next = [...this.state];
-    next[what] = keys[index+1];
-    return next;
-  }
+   next(what) {
+      if (!this.state) {
+         return false;
+      }
+      let keys = [];
+      switch (what) {
+         case 0:
+            keys = Object.keys(noseTypes);
+            break;
+         case 1:
+            keys = Object.keys(topTypes);
+            break;
+         case 2:
+            keys = Object.keys(accessoriesTypes);
+            break;
+         case 3:
+            keys = Object.keys(Avataaar.hairColors);
+            break;
+         case 4:
+            keys = Object.keys(facialHairTypes);
+            break;
+         case 5:
+            keys = Object.keys(clothesType);
+            break;
+         case 6:
+            keys = Object.keys(eyeTypes);
+            break;
+         case 7:
+            keys = Object.keys(eyebrowTypes);
+            break;
+         case 8:
+            keys = Object.keys(mouthTypes);
+            break;
+         case 9:
+            keys = Object.keys(Avataaar.skinColors);
+            break;
+         case 10:
+            keys = Object.keys(Avataaar.hairColors);
+            break;
+         case 11:
+            keys = Object.keys(Avataaar.hatColors);
+            break;
+      }
+      keys.sort();
+      let index = keys.indexOf(this.state[what]);
+      if (keys.length == 0 || index == -1 || index >= keys.length - 1) {
+         return false;
+      }
+      let next = [...this.state];
+      next[what] = keys[index + 1];
+      return next;
+   }
 
-  // from https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript/7616484#7616484
-  hash(str) {
-    const hash = str
-      .split("")
-      .reduce(
-        (prevHash, currVal) =>
-          ((prevHash << 5) - prevHash + currVal.charCodeAt(0)) | 0,
-        0
+   // from https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript/7616484#7616484
+   hash(str) {
+      const hash = str
+         .split("")
+         .reduce((prevHash, currVal) => ((prevHash << 5) - prevHash + currVal.charCodeAt(0)) | 0, 0);
+      return hash >= 0 ? hash : -hash;
+   }
+
+   randomOption(optionMap) {
+      const options = Object.keys(optionMap);
+      const index = this.random.nextInt(0, options.length);
+      return options[index];
+   }
+   randomArrayOption(options) {
+      const index = this.random.nextInt(0, options.length);
+      return options[index];
+   }
+
+   set identifier(identifier) {
+      this._identifier = identifier;
+      const identifierSeed = this.hash(identifier);
+      this.random = new Random(identifierSeed);
+
+      this.properties(
+         this.randomOption(noseTypes),
+         this.randomOption(topTypes),
+         this.randomOption(accessoriesTypes),
+         this.randomOption(Avataaar.hairColors),
+         this.randomOption(facialHairTypes),
+         this.randomOption(clothesType),
+         this.randomOption(eyeTypes),
+         this.randomOption(eyebrowTypes),
+         this.randomOption(mouthTypes),
+         this.randomOption(Avataaar.skinColors),
+         this.randomOption(Avataaar.hairColors),
+         this.randomOption(Avataaar.hatColors)
       );
-    return hash >= 0 ? hash : -hash;
-  }
+   }
 
-  randomOption(optionMap) {
-    const options = Object.keys(optionMap);
-    const index = this.random.nextInt(0, options.length);
-    return options[index];
-  }
-  randomArrayOption(options) {
-    const index = this.random.nextInt(0, options.length);
-    return options[index];
-  }
+   get identifier() {
+      return this._identifier;
+   }
 
-  set identifier(identifier) {
-    this._identifier = identifier;
-    const identifierSeed = this.hash(identifier);
-    this.random = new Random(identifierSeed);
-
-    this.properties(
-      this.randomOption(noseTypes),
-      this.randomOption(topTypes),
-      this.randomOption(accessoriesTypes),
-      this.randomOption(Avataaar.hairColors),
-      this.randomOption(facialHairTypes),
-      this.randomOption(clothesType),
-      this.randomOption(eyeTypes),
-      this.randomOption(eyebrowTypes),
-      this.randomOption(mouthTypes),
-      this.randomOption(Avataaar.skinColors),
-      this.randomOption(Avataaar.hairColors),
-      this.randomOption(Avataaar.hatColors)
-    );
-  }
-
-  get identifier() {
-    return this._identifier;
-  }
-
-  static get styles() {
-    return `
+   static get styles() {
+      return `
       :host {
         display: inline-block;
         width: 64px;
         --avataaar-internal-circle-color: var(--avataaar-circle-color, #6fb8e0);
       }
     `;
-  }
+   }
 
-  render() {
-    let svg = `
+   render() {
+      let svg = `
           <svg
         viewBox='0 0 264 280'
         version='1.1'
@@ -272,12 +291,12 @@ export default class Avataaar  {
         </g>
       </svg>
 `;
-    for (const color in this.colors) {
-      if (this.colors.hasOwnProperty(color)) {
-        const value = this.colors[color];
-        svg = svg.split(`var(${color})`).join(value);
+      for (const color in this.colors) {
+         if (this.colors.hasOwnProperty(color)) {
+            const value = this.colors[color];
+            svg = svg.split(`var(${color})`).join(value);
+         }
       }
-    }
-    return svg;
-  }
+      return svg;
+   }
 }
