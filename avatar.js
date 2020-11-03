@@ -6,6 +6,7 @@ import { mouthTypes } from "./svg-js/mouth.js";
 import { clothesType } from "./svg-js/clothes.js";
 import { eyeTypes } from "./svg-js/eyes.js";
 import { eyebrowTypes } from "./svg-js/eyebrows.js";
+import { noseTypes } from "./svg-js/nose.js";
 
 export default class Avataaar  {
   static get hatColors() {
@@ -53,19 +54,79 @@ export default class Avataaar  {
     };
   }
 
-  static get properties() {
-    return {
-      identifier: { type: String },
-      topType: { type: String },
-      accessoriesType: { type: String },
-      facialHairType: { type: String },
-      clotheType: { type: String },
-      eyeType: { type: String },
-      eyebrowType: { type: String },
-      mouthType: { type: String },
-      skinColor: { type: String },
-      noseType: { type: String }
-    };
+  properties(
+    noseType,
+    topType,
+    accessoriesType,
+    hairColor,
+    facialHairType,
+    clotheType,
+    eyeType,
+    eyebrowType,
+    mouthType,
+    skinColor,
+    facialHairColor,
+    hatColor
+  ) {
+    this.state = [
+      noseType,
+      topType,
+      accessoriesType,
+      hairColor,
+      facialHairType,
+      clotheType,
+      eyeType,
+      eyebrowType,
+      mouthType,
+      skinColor,
+      facialHairColor,
+      hatColor  
+    ];
+    this.colors = {};
+    this.colors["--avataaar-internal-circle-color"] =
+      "#6fb8e0";
+
+    this.noseType = noseTypes[noseType];
+    this.topType = topTypes[topType];
+    this.accessoriesType = accessoriesTypes[accessoriesType];
+    this.colors["--avataaar-hair-color"] = Avataaar.hairColors[hairColor];
+    this.facialHairType = facialHairTypes[facialHairType];
+    this.clotheType = clothesType[clotheType];
+    this.eyeType = eyeTypes[eyeType];
+    this.eyebrowType = eyebrowTypes[eyebrowType];
+    this.mouthType = mouthTypes[mouthType];
+    this.colors["--avataaar-skin-color"] = Avataaar.skinColors[skinColor];
+    this.colors["--avataaar-facial-hair-color"] = Avataaar.hairColors[facialHairColor];
+    this.colors["--avataaar-hat-color"] = Avataaar.hatColors[hatColor];
+  }
+
+  next(what) {
+    if(!this.state) {
+      return false;
+    }
+    let keys = [];
+    switch(what) {
+      case 0: keys = Object.keys(noseTypes); break;
+      case 1: keys = Object.keys(topTypes); break;
+      case 2: keys = Object.keys(accessoriesTypes); break;
+      case 3: keys = Object.keys(Avataaar.hairColors); break;
+      case 4: keys = Object.keys(facialHairTypes); break;
+      case 5: keys = Object.keys(clothesType); break;
+      case 6: keys = Object.keys(eyeTypes); break;
+      case 7: keys = Object.keys(eyebrowTypes); break;
+      case 8: keys = Object.keys(mouthTypes); break;
+      case 9: keys = Object.keys(Avataaar.skinColors); break;
+      case 10: keys = Object.keys(Avataaar.hairColors); break;
+      case 11: keys = Object.keys(Avataaar.hatColors); break;
+    }
+    keys.sort();
+    let index = keys.indexOf(this.state[what]);
+    if(keys.length == 0 || index == -1 || index >= keys.length - 1) {
+      return false;
+    }
+    let next = [...this.state];
+    next[what] = keys[index+1];
+    return next;
   }
 
   // from https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript/7616484#7616484
@@ -81,7 +142,7 @@ export default class Avataaar  {
   }
 
   randomOption(optionMap) {
-    const options = Object.values(optionMap);
+    const options = Object.keys(optionMap);
     const index = this.random.nextInt(0, options.length);
     return options[index];
   }
@@ -95,38 +156,20 @@ export default class Avataaar  {
     const identifierSeed = this.hash(identifier);
     this.random = new Random(identifierSeed);
 
-    this.noseType = `<g fill='black' transform='translate(76.000000, 82.000000)'>
-    <g
-      id='Nose/Default'
-      transform='translate(28.000000, 40.000000)'
-      opacity='0.16'>
-      <path
-        d='M16,8 C16,12.418278 21.372583,16 28,16 L28,16 C34.627417,16 40,12.418278 40,8'
-        id='Nose'
-      />
-    </g>
-</g>
-`;
-
-    this.topType = this.randomOption(topTypes);
-    this.accessoriesType = this.randomOption(accessoriesTypes);
-
-    this.colors = {};
-    this.colors["--avataaar-internal-circle-color"] =
-      "#6fb8e0";
-    this.colors["--avataaar-hair-color"] =
-      this.randomOption(Avataaar.hairColors);
-    this.facialHairType = this.randomOption(facialHairTypes);
-    this.clotheType = this.randomOption(clothesType);
-    this.eyeType = this.randomOption(eyeTypes);
-    this.eyebrowType = this.randomOption(eyebrowTypes);
-    this.mouthType = this.randomOption(mouthTypes);
-    this.colors["--avataaar-skin-color"] =
-      this.randomOption(Avataaar.skinColors);
-    this.colors["--avataaar-facial-hair-color"] =
-      this.randomOption(Avataaar.hairColors);
-    this.colors["--avataaar-hat-color"] =
-      this.randomOption(Avataaar.hatColors);
+    this.properties(
+      this.randomOption(noseTypes),
+      this.randomOption(topTypes),
+      this.randomOption(accessoriesTypes),
+      this.randomOption(Avataaar.hairColors),
+      this.randomOption(facialHairTypes),
+      this.randomOption(clothesType),
+      this.randomOption(eyeTypes),
+      this.randomOption(eyebrowTypes),
+      this.randomOption(mouthTypes),
+      this.randomOption(Avataaar.skinColors),
+      this.randomOption(Avataaar.hairColors),
+      this.randomOption(Avataaar.hatColors)
+    );
   }
 
   get identifier() {
@@ -221,8 +264,8 @@ export default class Avataaar  {
                 ${this.mouthType}
                 ${this.noseType}
                 ${this.topType}
-                ${this.accessoriesType}
                 ${this.facialHairType}
+                ${this.accessoriesType}
               </g>
             </g>
           </g>

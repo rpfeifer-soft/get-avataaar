@@ -1,3 +1,6 @@
+const use_filters = false;
+const filter1 = use_filters ? `filter='url("#filter1")'` : '';
+
 const Blank = `
 `;
 const Kurt = `
@@ -34,7 +37,7 @@ const Kurt = `
         </defs>
         <g
           id='Kurts'
-          filter='url("#filter1")'
+          ${filter1}
           transform='translate(5.000000, 2.000000)'>
           <path
             d='M66,11.1111111 C54.9625586,11.1111111 53.3705645,2.0266011 30.6705882,0.740740741 C7.98552275,-0.283199952 0.815225204,6.4494855 0.776470588,11.1111111 C0.813236892,15.4042795 -0.352293566,26.5612661 14.3647059,39.6296296 C29.1367705,55.1420807 44.2704162,49.8818301 49.6941176,44.8148148 C55.1352081,42.4731118 61.3403442,21.4596351 66,21.4814815 C70.6596558,21.5033279 76.8647919,42.4731118 82.3058824,44.8148148 C87.7295838,49.8818301 102.86323,55.1420807 117.635294,39.6296296 C132.352294,26.5612661 131.186763,15.4042795 131.223529,11.1111111 C131.184775,6.4494855 124.014477,-0.283199952 101.329412,0.740740741 C78.6294355,2.0266011 77.0374414,11.1111111 66,11.1111111 Z'
@@ -92,7 +95,7 @@ const Prescription01 = `
         </defs>
         <g
           id='Glasses'
-          filter='url("#filter1")'
+          ${filter1}
           transform='translate(8.000000, 8.000000)'
           fill='#D6EAF2'>
           <path
@@ -152,7 +155,7 @@ const Prescription02 = `
         </defs>
         <g
           id='Wayfarers'
-          filter='url("#filter1")'
+          ${filter1}
           transform='translate(6.000000, 7.000000)'
           fill='#252C2F'>
           <path
@@ -207,7 +210,7 @@ const Round = `
           <use
             fill='black'
             fillOpacity='1'
-            filter='url("#filter1")'
+            ${filter1}
             href='#Round-path1'
           />
           <use fill='#252C2F' fillRule='evenodd' href='#Round-path1' />
@@ -274,7 +277,7 @@ const Sunglasses = `
         </defs>
         <g
           id='Sunglasses'
-          filter='url("#filter1")'
+          ${filter1}
           transform='translate(8.000000, 8.000000)'>
           <g id='shades'>
             <use
@@ -376,7 +379,7 @@ const Wayfarers = `
         </defs>
         <g
           id='Wayfarers'
-          filter='url("#filter1")'
+          ${filter1}
           transform='translate(7.000000, 7.000000)'>
           <g
             id='Shades'

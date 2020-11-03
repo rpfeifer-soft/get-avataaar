@@ -1,3 +1,6 @@
+const use_filters = false;
+const filter1 = use_filters ? `filter='url("#filter1")'` : '';
+
 const Concerned = `
   <g transform='translate(76.000000, 82.000000)'>
       <g id='Mouth/Concerned' transform='translate(2.000000, 52.000000)'>
@@ -385,7 +388,7 @@ const Vomit = `
           <use
             fill='black'
             opacity='1'
-            filter='url("#filter1")'
+            ${filter1}
             href='#Vomit-path2'
           />
         </g>

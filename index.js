@@ -14,12 +14,7 @@ function log(msg) {
 
 log(`Waiting to serve avataars`);
 
-let avatar = new Avataaar();
-avatar.identifier = "custom-seed";
-let svg = avatar.render();
-fs.writeFileSync('test.svg', svg);
-
-async function convert() {
+async function convert(svg, out) {
 
    const preset = CANVG.presets.node({
       DOMParser: XMLDOM.DOMParser,
@@ -27,17 +22,72 @@ async function convert() {
       fetch: FETCH
    });
    
-   const canvas = preset.createCanvas(64, 64);
+   const canvas = preset.createCanvas(512, 512);
    const ctx = canvas.getContext('2d');
    const v = CANVG.Canvg.fromString(ctx, svg, preset);
 
-   await v.render();
-
-   const png = canvas.toBuffer();
-
-   fs.writeFileSync('test.png', png);
+   try
+   {
+      await v.render();
+      
+         const png = canvas.toBuffer();
+      
+         fs.writeFileSync(out, png);
+   } 
+   catch {}
 }
 
-log(svg);
+async function start() {
+   let html = `
+   <html>
+   <body>
+      <table>
+            `;
+   let avatar = new Avataaar();
+   avatar.identifier = "custom-seed";
+   avatar.properties(
+      'Default',
+      'Turban',
+      'Blank',
+      'Auburn',
+      'BeardLight',
+      'BlazerShirt',
+      'Close',
+      'Angry',
+      'Concerned',
+      'Black',
+      'Auburn',
+      'Black'
+   );
+   let svg = avatar.render();
+   fs.writeFileSync('test/test.svg', svg);
+   let test = 11;
+   let index = 1;
+   let next = false;
+   while(next = avatar.next(test)) {
+      avatar.properties(...next);
+      let which = avatar.state[test];
+      svg = avatar.render();
+      fs.writeFileSync('test/test'+index+'.svg', svg);
+      convert(svg, 'test/test'+index+'.png');
 
-convert();
+      html += `<tr>
+      <td>
+      <img src="test/test${index}.svg" width="512" height="512"/>
+   </td>
+   <td>
+      <img src="test/test${index}.png" width="512" height="512"/>
+   </td><td>${which}</td></tr>
+`;
+      index++;
+   };
+   html += `
+   </table>
+</body>
+</html>   
+   `;
+
+   fs.writeFileSync('test.html', html);
+}
+
+start();
