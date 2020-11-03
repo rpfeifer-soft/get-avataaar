@@ -7,5 +7,5 @@ Docker application to serve avataar images in png format.
 Provide options via secrets.js
 
     export default {
-
+       port: ...
     }

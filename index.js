@@ -35,6 +35,6 @@ app.get("/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", async (req, res)
    svgFunction(req, res, svg);
 });
 
-app.listen(3000, () => {
-   log(`Waiting to serve avataars`);
+app.listen(secrets.port, () => {
+   log(`Waiting to serve avataars on port ${secrets.port}`);
 });
