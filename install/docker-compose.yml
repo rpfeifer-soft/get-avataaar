@@ -1,10 +1,21 @@
 version: "3"
 
 services:
+   server:
+      container_name: avatar-app
+      image: rpfeifer/team-manager:avatar
+      expose:
+         - "3011"
+      volumes:
+         - ./secrets.js:/app/secrets.js
+      restart: always
 
-  server:
-    container_name: avatar-app
-    image: rpfeifer/team-manager:avatar
-    volumes:
-      - ./secrets.js:/app/secrets.js
-    restart: always
+   nginx:
+      container_name: avatar-nginx
+      image: nginx
+      ports:
+         - "3010:3010"
+      depends_on:
+         - server
+      volumes:
+         - ./nginx.conf:/etc/nginx/nginx.conf:ro
