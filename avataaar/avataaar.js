@@ -280,12 +280,12 @@ export default class Avataaar {
                   fill-rule='evenodd'
                   transform='translate(12.000000, 40.000000)'>
                   <mask id='mask-1' fill='white'>
-                    <use xlink:href='#path-1' />
+                    <use href='#path-1' />
                   </mask>
                   <use
                     id='Circle-Background'
                     fill='#E6E6E6'
-                    xlink:href='#path-1'
+                    href='#path-1'
                   />
                   <g
                     id='Color/Palette/Blue-01'
@@ -295,7 +295,7 @@ export default class Avataaar {
                   </g>
                 </g>
                 <mask id='mask-2' fill='white'>
-                  <use xlink:href='#path-2' />
+                  <use href='#path-2' />
                 </mask>
               <g id='Mask' />
               <g
@@ -306,9 +306,9 @@ export default class Avataaar {
                 mask='url(#mask-2)'>
                 <g id='Body' transform='translate(32.000000, 36.000000)'>
                   <mask id='mask-silhouette' fill='white'>
-                    <use xlink:href='#path-silhouette' />
+                    <use href='#path-silhouette' />
                   </mask>
-                  <use fill='var(--avataaar-skin-color)' xlink:href='#path-silhouette' />
+                  <use fill='var(--avataaar-skin-color)' href='#path-silhouette' />
                   <path
                     d='M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z'
                     id='Neck-Shadow'
