@@ -10,12 +10,23 @@ function log(msg) {
    console.log(moment().format("DD.MM. HH:mm:ss.SSS") + ":", msg);
 }
 
+async function idFunction(req, res) {
+   let svg = id2svg(req.params.id);
+   if (req.params.type == "svg") {
+      res.contentType("image/svg+xml");
+      res.send(svg);
+   } else {
+      let png = await svg2png(svg, +req.params.width, +req.params.height);
+      res.contentType("image/png");
+      res.send(png);
+   }
+}
+
 const app = express();
 
-app.get("/id(/:id)?/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
-   let svg = id2svg(req.params.id);
-
-   res.send(svg);
+app.get("/id/:id/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", idFunction);
+app.get("/random/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
+   idFunction(req, res);
 });
 
 app.listen(3000, () => {
