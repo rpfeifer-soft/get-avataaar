@@ -1,32 +1,28 @@
-import { accessoriesTypes } from "./accessories.js";
 import Avataaar from "./avataaar.js";
-import { eyebrowTypes } from "./eyebrows.js";
-import { eyeTypes } from "./eyes.js";
-import { facialHairTypes } from "./facial-hair.js";
-import { mouthTypes } from "./mouth.js";
 
-function id2svg(id) {
+export function id2svg(id) {
    let avataaar = new Avataaar();
    avataaar.identifier = id;
    return avataaar.render();
 }
 
-function props2svg(props) {
+export function props2svg(props) {
    let avataaar = new Avataaar();
 
    // The defaults
-   let noseType = "Default";
-   let topType = "ShortHairShortFlat";
-   let accessoriesType = "Blank";
-   let facialHairType = "Blank";
-   let clothesType = "ShirtVNeck";
-   let eyeType = "Default";
-   let eyebrowType = "Default";
-   let mouthType = "Default";
-   let hairColor = "BrownDark";
-   let skinColor = "Light";
-   let facialHairColor = "BrownDark";
-   let hatColor = "Heather";
+   let noseType = props["noseType"] || "Default";
+   let topType = props["topType"] || "ShortHairShortFlat";
+   let accessoriesType = props["accessoriesType"] || "Blank";
+   let facialHairType = props["facialHairType"] || "Blank";
+   let clothesType = props["clothesType"] || "ShirtVNeck";
+   let eyeType = props["eyeType"] || "Default";
+   let eyebrowType = props["eyebrowType"] || "Default";
+   let mouthType = props["mouthType"] || "Default";
+   let hairColor = props["hairColor"] || "BrownDark";
+   let skinColor = props["skinColor"] || "Light";
+   let facialHairColor = props["facialHairColor"] || "BrownDark";
+   let hatColor = props["hatColor"] || "Heather";
+   let shirtColor = props["shirtColor"] || "PastelBlue";
 
    avataaar.properties(
       noseType,
@@ -40,7 +36,8 @@ function props2svg(props) {
       hairColor,
       skinColor,
       facialHairColor,
-      hatColor
+      hatColor,
+      shirtColor
    );
    return avataaar.render();
 }

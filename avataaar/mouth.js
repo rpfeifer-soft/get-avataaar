@@ -1,5 +1,13 @@
 const use_filters = false;
-const filter1 = use_filters ? `filter='url("#filter1")'` : '';
+const filter1 = use_filters ? `filter='url("#filter1")'` : "";
+const use_vomit = use_filters
+   ? `<use
+  fill='black'
+  opacity='1'
+  ${filter1}
+  href='#Vomit-path2'
+  />`
+   : "";
 
 const Concerned = `
   <g transform='translate(76.000000, 82.000000)'>
@@ -385,28 +393,23 @@ const Vomit = `
         />
         <g id='Vomit-Stuff'>
           <use fill='#88C553' fillRule='evenodd' href='#Vomit-path2' />
-          <use
-            fill='black'
-            opacity='1'
-            ${filter1}
-            href='#Vomit-path2'
-          />
+          ${use_vomit}
         </g>
       </g>
     </g>
 `;
 
 export const mouthTypes = {
-  Concerned: Concerned,
-  Default: Default,
-  Disbelief: Disbelief,
-  Eating: Eating,
-  Grimace: Grimace,
-  Sad: Sad,
-  ScreamOpen: ScreamOpen,
-  Serious: Serious,
-  Smile: Smile,
-  Tongue: Tongue,
-  Twinkle: Twinkle,
-  Vomit: Vomit
+   Concerned: Concerned,
+   Default: Default,
+   Disbelief: Disbelief,
+   Eating: Eating,
+   Grimace: Grimace,
+   Sad: Sad,
+   ScreamOpen: ScreamOpen,
+   Serious: Serious,
+   Smile: Smile,
+   Tongue: Tongue,
+   Twinkle: Twinkle,
+   Vomit: Vomit,
 };

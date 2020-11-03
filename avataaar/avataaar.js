@@ -87,6 +87,40 @@ export default class Avataaar {
       };
    }
 
+   static state2props(state) {
+      let [
+         noseType,
+         topType,
+         accessoriesType,
+         facialHairType,
+         clothesType,
+         eyeType,
+         eyebrowType,
+         mouthType,
+         hairColor,
+         skinColor,
+         facialHairColor,
+         hatColor,
+         shirtColor,
+      ] = state;
+
+      return {
+         noseType,
+         topType,
+         accessoriesType,
+         facialHairType,
+         clothesType,
+         eyeType,
+         eyebrowType,
+         mouthType,
+         hairColor,
+         skinColor,
+         facialHairColor,
+         hatColor,
+         shirtColor,
+      };
+   }
+
    properties(
       noseType,
       topType,
@@ -210,9 +244,13 @@ export default class Avataaar {
    }
 
    set identifier(identifier) {
-      this._identifier = identifier;
-      const identifierSeed = this.hash(identifier);
-      this.random = new Random(identifierSeed);
+      if (identifier) {
+         this._identifier = identifier;
+         const identifierSeed = this.hash(identifier);
+         this.random = new Random(identifierSeed);
+      } else {
+         this.random = new Random(new Date().getTime());
+      }
 
       this.properties(
          this.randomOption(noseTypes),
@@ -312,7 +350,7 @@ export default class Avataaar {
                   <path
                     d='M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z'
                     id='Neck-Shadow'
-                    fillOpacity='0.100000001'
+                    style='opacity: 0.100000001'
                     fill='#000000'
                     mask='url(#mask-silhouette)'
                   />
