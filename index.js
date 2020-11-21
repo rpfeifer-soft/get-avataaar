@@ -2,6 +2,7 @@ import moment from "moment";
 import express from "express";
 import svg2png from "./svg2png.js";
 import { id2svg, props2svg } from "./avataaar/tool.js";
+import swStats from "swagger-stats";
 
 function log(msg) {
    console.log(moment().format("DD.MM. HH:mm:ss.SSS") + ":", msg);
@@ -20,6 +21,13 @@ async function svgFunction(req, res, svg) {
 }
 
 const app = express();
+
+// Enable swagger-stats middleware in express app, passing swagger specification as option
+app.use(
+   swStats.getMiddleware({
+      name: "avatar",
+   })
+);
 
 app.get("/id/:id/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
    let svg = id2svg(req.params.id);

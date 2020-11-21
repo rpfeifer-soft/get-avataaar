@@ -27,4 +27,4 @@ COPY ./index.js /app/
 COPY ./svg2png.js /app/
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-CMD nginx && npm start
+CMD (nginx -g 'pid /tmp/nginx.pid;') && npm start
