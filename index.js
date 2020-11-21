@@ -1,4 +1,3 @@
-import secrets from "./secrets.js";
 import moment from "moment";
 import express from "express";
 import svg2png from "./svg2png.js";
@@ -35,6 +34,6 @@ app.get("/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", async (req, res)
    svgFunction(req, res, svg);
 });
 
-app.listen(secrets.port, () => {
-   log(`Waiting to serve avataars on port ${secrets.port}`);
+app.listen(3000, () => {
+   log(`Waiting to serve avataars on port 3000`);
 });
