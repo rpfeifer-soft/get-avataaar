@@ -6,17 +6,5 @@ services:
       build:
          context: .
          dockerfile: ./Dockerfile
-      expose:
-         - "3011"
-      volumes:
-         - ./secrets.js:/app/secrets.js
-
-   nginx:
-      container_name: avatar-nginx
-      image: nginx
       ports:
-         - "3010:3010"
-      depends_on:
-         - server
-      volumes:
-         - ./nginx.conf:/etc/nginx/nginx.conf:ro
+         - "80:80"
