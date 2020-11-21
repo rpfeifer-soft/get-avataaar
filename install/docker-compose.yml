@@ -4,6 +4,6 @@ services:
    server:
       container_name: avatar
       image: rpfeifer/team-manager:avatar
-      port:
+      ports:
          - "3010:80"
       restart: always
