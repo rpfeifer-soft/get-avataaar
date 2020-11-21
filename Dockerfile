@@ -1,9 +1,18 @@
 # Build process
-FROM node as node_nginx
+FROM node:alpine as node_nginx
 
 # Install nginx
-RUN apt-get --assume-yes update && \
-    apt-get --assume-yes install nginx
+RUN apk update && \
+    apk add nginx
+
+# Provide dependencies for node-canvas in alpine environment
+RUN apk add --no-cache \
+    build-base \
+    g++ \
+    cairo-dev \
+    jpeg-dev \
+    pango-dev \
+    giflib-dev
 
 # Consolidate
 FROM node_nginx
