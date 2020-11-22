@@ -27,8 +27,5 @@ COPY ./index.js /app/
 COPY ./svg2png.js /app/
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=nginx/nginx-prometheus-exporter /usr/bin/exporter /app/exporter
-
 CMD (nginx -g 'pid /tmp/nginx.pid;') && \
-    (./exporter  -nginx.scrape-uri http://localhost/nginx/status) & \
     npm start
