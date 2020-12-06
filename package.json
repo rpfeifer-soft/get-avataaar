@@ -7,7 +7,6 @@
    "appid": "avataaar",
    "title": "Avataaar",
    "dockerAccount": "rpfeifer/team-manager",
-   "prodServer": "iserver.local",
    "githubAccount": "https://github.com/rpfeifer-soft",
    "scripts": {
       "start": "node index.js",
