@@ -6,7 +6,7 @@
    "type": "module",
    "appid": "avataaar",
    "title": "Avataaar",
-   "dockerAccount": "rpfeifer/team-manager",
+   "dockerAccount": "rpfeifer/docker-image",
    "githubAccount": "https://github.com/rpfeifer-soft",
    "scripts": {
       "start": "node index.js",
