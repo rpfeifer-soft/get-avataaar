@@ -1,19 +1,17 @@
 {
-   "name": "get-avataaar",
+   "name": "avataaar",
    "version": "1.0.0",
-   "description": "Get an avatar in format png.",
+   "description": "Get an avataaar in format png.",
    "main": "index.js",
    "type": "module",
-   "appid": "avatar",
-   "title": "Get Avataaar",
+   "appid": "avataaar",
+   "title": "Avataaar",
    "dockerAccount": "rpfeifer/team-manager",
    "prodServer": "iserver.local",
-   "prodBase": "Desktop/get-avataaar",
    "githubAccount": "https://github.com/rpfeifer-soft",
    "scripts": {
       "start": "node index.js",
       "publish": "docker build . --file Dockerfile --no-cache --tag ${npm_package_dockerAccount}:${npm_package_appid} && docker push ${npm_package_dockerAccount}:${npm_package_appid}",
-      "ssh": "ssh ${npm_package_prodServer} -t \"cd ${npm_package_prodBase}; echo svn export --force ${npm_package_githubAccount}/${npm_package_name}/trunk/install .; zsh --login; echo;\"",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
    "author": "René Pfeifer",

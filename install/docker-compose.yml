@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-   server:
-      container_name: avatar
-      image: rpfeifer/team-manager:avatar
-      ports:
-         - "3010:80"
-      restart: always
