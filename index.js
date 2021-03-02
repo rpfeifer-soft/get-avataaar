@@ -3,6 +3,7 @@ import express from "express";
 import svg2png from "./svg2png.js";
 import { id2svg, props2svg, rand2svg, id2json, props2json, rand2json } from "./avataaar/tool.js";
 import swStats from "swagger-stats";
+import compression from "compression";
 
 function log(msg) {
    console.log(moment().format("DD.MM. HH:mm:ss.SSS") + ":", msg);
@@ -28,6 +29,8 @@ app.use(
       name: "avatar",
    })
 );
+
+app.use(compression());
 
 app.get("/id/:id/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
    if (req.query.mode == "json") {
