@@ -33,7 +33,7 @@ app.get("/id/:id/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res
    if (req.query.mode == "json") {
       let json = id2json(req.params.id);
       res.contentType("application/json");
-      res.send(JSON.stringify(json, null, 3));
+      res.send(JSON.stringify(json));
    } else {
       let svg = id2svg(req.params.id);
       svgFunction(req, res, svg);

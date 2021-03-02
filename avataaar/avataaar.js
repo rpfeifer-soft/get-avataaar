@@ -302,17 +302,28 @@ export default class Avataaar {
          "hatColor",
          "shirtColor",
       ];
-      const json = {
-         current: {},
-         next: {},
-      };
+
       const url = (state) => {
          let params = types.map((type) => `${type}=${state[type]}`);
          return params.join("&");
       };
+
+      const json = {
+         id: this._identifier,
+         url: "",
+         current: {},
+         next: {},
+      };
+
+      // Calc the current state
       types.forEach((type, index) => {
          json.current[type] = this.state[index];
       });
+
+      // Set the current url
+      json.url = url(json.current);
+
+      // Calc the alternatives
       types.forEach((type, index) => {
          json.next[type] = {};
 
