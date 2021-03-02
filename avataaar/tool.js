@@ -5,8 +5,20 @@ export function id2svg(id) {
    avataaar.identifier = id;
    return avataaar.render();
 }
+export function id2json(id) {
+   let avataaar = new Avataaar();
+   avataaar.identifier = id;
+   return avataaar.json();
+}
 
-export function props2svg(props) {
+export function rand2svg() {
+   return id2svg();
+}
+export function rand2json() {
+   return id2json();
+}
+
+function props2avataaar(props) {
    let avataaar = new Avataaar();
 
    // The defaults
@@ -39,5 +51,14 @@ export function props2svg(props) {
       hatColor,
       shirtColor
    );
+   return avataaar;
+}
+
+export function props2svg(props) {
+   let avataaar = props2avataaar(props);
    return avataaar.render();
+}
+export function props2json(props) {
+   let avataaar = props2avataaar(props);
+   return avataaar.json();
 }

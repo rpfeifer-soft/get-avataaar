@@ -1,7 +1,7 @@
 import moment from "moment";
 import express from "express";
 import svg2png from "./svg2png.js";
-import { id2svg, props2svg } from "./avataaar/tool.js";
+import { id2svg, props2svg, rand2svg, id2json, props2json, rand2json } from "./avataaar/tool.js";
 import swStats from "swagger-stats";
 
 function log(msg) {
@@ -30,16 +30,34 @@ app.use(
 );
 
 app.get("/id/:id/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
-   let svg = id2svg(req.params.id);
-   svgFunction(req, res, svg);
+   if (req.query.mode == "json") {
+      let json = id2json(req.params.id);
+      res.contentType("application/json");
+      res.send(JSON.stringify(json, null, 3));
+   } else {
+      let svg = id2svg(req.params.id);
+      svgFunction(req, res, svg);
+   }
 });
 app.get("/random/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
-   let svg = id2svg();
-   svgFunction(req, res, svg);
+   if (req.query.mode == "json") {
+      let json = rand2json();
+      res.contentType("application/json");
+      res.send(JSON.stringify(json));
+   } else {
+      let svg = rand2svg();
+      svgFunction(req, res, svg);
+   }
 });
 app.get("/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", async (req, res) => {
-   let svg = props2svg(req.query);
-   svgFunction(req, res, svg);
+   if (req.query.mode == "json") {
+      let json = props2json(req.query);
+      res.contentType("application/json");
+      res.send(JSON.stringify(json));
+   } else {
+      let svg = props2svg(req.query);
+      svgFunction(req, res, svg);
+   }
 });
 
 app.listen(3000, () => {

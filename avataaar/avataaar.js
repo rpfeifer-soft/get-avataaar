@@ -169,7 +169,7 @@ export default class Avataaar {
       this.colors["--avataaar-shirt-color"] = Avataaar.shirtColors[shirtColor];
    }
 
-   next(what) {
+   next(what, all) {
       if (!this.state) {
          return false;
       }
@@ -216,6 +216,9 @@ export default class Avataaar {
             break;
       }
       keys.sort();
+      if (all) {
+         return keys;
+      }
       let index = keys.indexOf(this.state[what]);
       if (keys.length == 0 || index == -1 || index >= keys.length - 1) {
          return false;
@@ -281,6 +284,46 @@ export default class Avataaar {
         --avataaar-internal-circle-color: var(--avataaar-circle-color, #6fb8e0);
       }
     `;
+   }
+
+   json() {
+      const types = [
+         "noseType",
+         "topType",
+         "accessoriesType",
+         "facialHairType",
+         "clothesType",
+         "eyeType",
+         "eyebrowType",
+         "mouthType",
+         "hairColor",
+         "skinColor",
+         "facialHairColor",
+         "hatColor",
+         "shirtColor",
+      ];
+      const json = {
+         current: {},
+         next: {},
+      };
+      const url = (state) => {
+         let params = types.map((type) => `${type}=${state[type]}`);
+         return params.join("&");
+      };
+      types.forEach((type, index) => {
+         json.current[type] = this.state[index];
+      });
+      types.forEach((type, index) => {
+         json.next[type] = {};
+
+         const keys = this.next(index, true);
+         keys.forEach((now) => {
+            let next = { ...json.current };
+            next[type] = now;
+            json.next[type][now] = url(next);
+         });
+      });
+      return json;
    }
 
    render() {
