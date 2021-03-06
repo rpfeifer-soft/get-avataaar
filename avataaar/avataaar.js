@@ -340,7 +340,7 @@ export default class Avataaar {
    render() {
       let svg = `
           <svg
-        viewBox='0 0 264 280'
+        viewBox='0 0 320 320'
         version='1.1'
         xmlns='http://www.w3.org/2000/svg'
         xmlns:xlink='http://www.w3.org/1999/xlink'>
@@ -360,6 +360,7 @@ export default class Avataaar {
           id='Avataaar'
           stroke='none'
           stroke-width='1'
+          transform='translate(28.000000, 0)'
           fill='none'
           fill-rule='evenodd'>
           <g

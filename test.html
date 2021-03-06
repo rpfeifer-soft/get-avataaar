@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+         div {
+            display: flex;
+            position: relative;
+            border: 1px solid black;
+            width: auto;
+            max-width: 100px;
+         }
+         div.box {
+            display: block;
+            position: absolute;
+            box-sizing: border-box;
+            left: 12.5%;
+            top: 12.5%;
+            width: 75%;
+            height: 75%;
+         }
+      </style>
+   </head>
+   <body>
+      <div>
+         <img src="http://localhost:3000/svg?id=Rene2" width="100" />
+         <div class="box"></div>
+      </div>
+      <hr />
+      <div>
+         <img src="http://localhost:3000/200.png?id=Rene2" width="100" />
+         <div class="box"></div>
+      </div>
+   </body>
+</html>

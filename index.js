@@ -4,21 +4,23 @@ import svg2png from "./svg2png.js";
 import { id2svg, props2svg, rand2svg, id2json, props2json, rand2json } from "./avataaar/tool.js";
 import swStats from "swagger-stats";
 import compression from "compression";
+import fs from "fs";
 
 function log(msg) {
    console.log(moment().format("DD.MM. HH:mm:ss.SSS") + ":", msg);
 }
 
-async function svgFunction(req, res, svg) {
+async function sendAsSvg(req, res, svg) {
    log(req.url);
-   if (req.params.type == "svg") {
-      res.contentType("image/svg+xml");
-      res.send(svg);
-   } else {
-      let png = await svg2png(svg, +req.params.width, +req.params.height);
-      res.contentType("image/png");
-      res.send(png);
-   }
+   res.contentType("image/svg+xml");
+   res.send(svg);
+}
+
+async function sendAsPng(req, res, svg, size) {
+   log(req.url);
+   let png = await svg2png(svg, +size, +size);
+   res.contentType("image/png");
+   res.send(png);
 }
 
 const app = express();
@@ -32,35 +34,48 @@ app.use(
 
 app.use(compression());
 
-app.get("/id/:id/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
-   if (req.query.mode == "json") {
-      let json = id2json(req.params.id);
-      res.contentType("application/json");
-      res.send(JSON.stringify(json));
+app.get("/json", (req, res) => {
+   let json = false;
+   if (req.query.id) {
+      json = id2json(req.query.id);
+   } else if (req.query.id === "") {
+      json = rand2json();
    } else {
-      let svg = id2svg(req.params.id);
-      svgFunction(req, res, svg);
+      json = props2json(req.query);
    }
+   res.contentType("application/json");
+   res.send(JSON.stringify(json));
 });
-app.get("/random/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", (req, res) => {
-   if (req.query.mode == "json") {
-      let json = rand2json();
-      res.contentType("application/json");
-      res.send(JSON.stringify(json));
+
+app.get("/svg", (req, res) => {
+   let svg = false;
+   if (req.query.id) {
+      svg = id2svg(req.query.id);
+   } else if (req.query.id === "") {
+      svg = rand2svg();
    } else {
-      let svg = rand2svg();
-      svgFunction(req, res, svg);
+      svg = props2svg(req.query);
    }
+   sendAsSvg(req, res, svg);
 });
-app.get("/(:width([0-9]+))x(:height([0-9]+)).(:type(png|svg))", async (req, res) => {
-   if (req.query.mode == "json") {
-      let json = props2json(req.query);
-      res.contentType("application/json");
-      res.send(JSON.stringify(json));
+
+app.get("/(:size([0-9]+)).png", (req, res) => {
+   let svg = false;
+   if (req.query.id) {
+      svg = id2svg(req.query.id);
+   } else if (req.query.id === "") {
+      svg = rand2svg();
    } else {
-      let svg = props2svg(req.query);
-      svgFunction(req, res, svg);
+      svg = props2svg(req.query);
    }
+   sendAsPng(req, res, svg, +req.params.size);
+});
+
+app.get("/test", (req, res) => {
+   fs.readFile("./test.html", null, (err, data) => {
+      res.contentType("text/html");
+      res.send(data);
+   });
 });
 
 app.listen(3000, () => {
