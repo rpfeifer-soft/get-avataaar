@@ -1,11 +1,13 @@
 const use_paths = false;
 const use_filters = false;
 
-const filter_path1 = use_paths ? `filter='url("#WinterHat1-path2")'` : '';
-const filter_path3 = use_paths ? `filter='url("#WinterHat3-path2")'` : '';
-const filter_path4 = use_paths ? `filter='url("#WinterHat4-path4")'` : '';
+const filter_path1 = use_paths ? `filter='url("#WinterHat1-path2")'` : "";
+const filter_path3 = use_paths ? `filter='url("#WinterHat3-path2")'` : "";
+const filter_path4 = use_paths ? `filter='url("#WinterHat4-path4")'` : "";
 
-function filter(no) { return use_filters ? `filter='url("#filter${no}")'` : ''};
+function filter(no) {
+   return use_filters ? `filter='url("#filter${no}")'` : "";
+}
 
 const Eyepatch = `
       <g id='Top' strokeWidth='1' fillRule='evenodd'>
@@ -625,7 +627,7 @@ const LongHairFrida = `
               transform='translate(57.000000, 12.000000)'>
               <path
                 d='M132,85.9365741 L132,86.1659169 C137.155374,87.0308248 141.196116,91.1828748 141.893354,96.3931952 C144.449672,93.4871212 146,89.6746099 146,85.5 C146,83.370043 145.596416,81.3343479 144.861548,79.4652142 C148.026608,76.4588698 150,72.2098901 150,67.5 C150,61.6639649 146.970105,56.5355997 142.397534,53.6021248 C143.424844,51.4510861 144,49.0427105 144,46.5 C144,38.865183 138.814518,32.4415002 131.77335,30.5587463 C131.922635,29.560863 132,28.5394662 132,27.5 C132,16.1781626 122.821837,7 111.5,7 C108.870853,7 106.357304,7.49493913 104.047446,8.3967274 C100.317449,3.30576666 94.2947759,0 87.5,0 C83.2377504,0 79.2793114,1.30076749 76,3.52698535 C72.7206886,1.30076749 68.7622496,0 64.5,0 C57.7052241,0 51.6825514,3.30576666 47.9525545,8.3967274 C45.6426956,7.49493913 43.1291474,7 40.5,7 C29.1781626,7 20,16.1781626 20,27.5 C20,28.5394662 20.0773647,29.560863 20.2266501,30.5587463 C13.1854816,32.4415002 8,38.865183 8,46.5 C8,48.6917361 8.4273349,50.7836628 9.20323008,52.6970055 C3.75045759,55.3899422 0,61.0069879 0,67.5 C0,72.9379417 2.63063706,77.7614652 6.68874609,80.7674054 C6.2406808,82.2665254 6,83.8551557 6,85.5 C6,89.6746099 7.55032816,93.4871212 10.1066457,96.3931952 C10.8038839,91.1828748 14.8446259,87.0308248 20,86.1659169 L20,85.9365741 C20.0276665,85.957925 20.0554443,85.9790669 20.0833333,86 C22.985911,38.8525302 68.5527463,55.7423492 76.000002,29.3361688 C83.4472619,55.7423461 129.014089,38.8525344 131.916667,86 C131.944556,85.9790669 131.972333,85.957925 132,85.9365741 Z M52,168.610951 L52,172.811832 C51.1847358,172.935746 50.3498715,173 49.5,173 C42.6790709,173 36.8248202,168.861157 34.3116389,162.957863 C25.7536314,162.348807 19,155.213101 19,146.5 C19,145.029028 19.1924867,143.603013 19.5536459,142.245771 C12.8575367,140.144362 8,133.88945 8,126.5 C8,122.755519 9.24731211,119.302363 11.3491137,116.533355 C13.0865598,119.870864 16.346706,122.289132 20.2085808,122.867187 C21.9518066,143.114792 34.4692178,160.282984 52,168.610951 Z M100,168.610951 L100,172.811832 C100.815264,172.935746 101.650128,173 102.5,173 C109.320929,173 115.17518,168.861157 117.688361,162.957863 C126.246369,162.348807 133,155.213101 133,146.5 C133,145.029028 132.807513,143.603013 132.446354,142.245771 C139.142463,140.144362 144,133.88945 144,126.5 C144,122.755519 142.752688,119.302363 140.650886,116.533355 C138.91344,119.870864 135.653294,122.289132 131.791419,122.867187 C130.048193,143.114792 117.530782,160.282984 100,168.610951 Z'
-                fill='var(--avataaar-hair-color)'
+                fill='#1f3540'
               />
             </g>
             <g
@@ -946,7 +948,7 @@ const LongHairShavedSides = `
               <path
                 d='M116.179148,40 L146,40 C171.405098,40 192,60.5949015 192,86 L192,154.108712 C192,180.650314 210.758775,204.349179 222.609956,226.05167 C234.461138,247.754161 215.254522,268.242596 195.770735,276.769484 C190.902336,278.900091 185.645645,280 180.331438,280 L135.26309,280 C78.9108161,280 70.2166412,216.309596 67.6972794,146.504423 L70.2166412,84.1431398 C71.212998,59.4805095 91.4964003,40 116.179148,40 Z'
                 class='CustomColor'
-                fill='var(--avataaar-hair-color)'
+                fill='#ccb55a'
                 mask='url("#LongHairShavedSides-mask3")'
               />
             </g>
@@ -2067,39 +2069,39 @@ const WinterHat4 = `
 `;
 
 export const topTypes = {
-  NoHair: NoHair,
-  Eyepatch: Eyepatch,
-  Hat: Hat,
-  Hijab: Hijab,
-  Turban: Turban,
-  WinterHat1: WinterHat1,
-  WinterHat2: WinterHat2,
-  WinterHat3: WinterHat3,
-  WinterHat4: WinterHat4,
-  LongHairBigHair: LongHairBigHair,
-  LongHairBob: LongHairBob,
-  LongHairBun: LongHairBun,
-  LongHairCurly: LongHairCurly,
-  LongHairCurvy: LongHairCurvy,
-  LongHairDreads: LongHairDreads,
-  LongHairFrida: LongHairFrida,
-  LongHairFro: LongHairFro,
-  LongHairFroBand: LongHairFroBand,
-  LongHairNotTooLong: LongHairNotTooLong,
-  LongHairShavedSides: LongHairShavedSides,
-  LongHairMiaWallace: LongHairMiaWallace,
-  LongHairStraight: LongHairStraight,
-  LongHairStraight2: LongHairStraight2,
-  LongHairStraightStrand: LongHairStraightStrand,
-  ShortHairDreads01: ShortHairDreads01,
-  ShortHairDreads02: ShortHairDreads02,
-  ShortHairFrizzle: ShortHairFrizzle,
-  ShortHairShaggyMullet: ShortHairShaggyMullet,
-  ShortHairShortCurly: ShortHairShortCurly,
-  ShortHairShortFlat: ShortHairShortFlat,
-  ShortHairShortRound: ShortHairShortRound,
-  ShortHairShortWaved: ShortHairShortWaved,
-  ShortHairSides: ShortHairSides,
-  ShortHairTheCaesar: ShortHairTheCaesar,
-  ShortHairTheCaesarSidePart: ShortHairTheCaesarSidePart
+   NoHair: NoHair,
+   Eyepatch: Eyepatch,
+   Hat: Hat,
+   Hijab: Hijab,
+   Turban: Turban,
+   WinterHat1: WinterHat1,
+   WinterHat2: WinterHat2,
+   WinterHat3: WinterHat3,
+   WinterHat4: WinterHat4,
+   LongHairBigHair: LongHairBigHair,
+   LongHairBob: LongHairBob,
+   LongHairBun: LongHairBun,
+   LongHairCurly: LongHairCurly,
+   LongHairCurvy: LongHairCurvy,
+   LongHairDreads: LongHairDreads,
+   LongHairFrida: LongHairFrida,
+   LongHairFro: LongHairFro,
+   LongHairFroBand: LongHairFroBand,
+   LongHairNotTooLong: LongHairNotTooLong,
+   LongHairShavedSides: LongHairShavedSides,
+   LongHairMiaWallace: LongHairMiaWallace,
+   LongHairStraight: LongHairStraight,
+   LongHairStraight2: LongHairStraight2,
+   LongHairStraightStrand: LongHairStraightStrand,
+   ShortHairDreads01: ShortHairDreads01,
+   ShortHairDreads02: ShortHairDreads02,
+   ShortHairFrizzle: ShortHairFrizzle,
+   ShortHairShaggyMullet: ShortHairShaggyMullet,
+   ShortHairShortCurly: ShortHairShortCurly,
+   ShortHairShortFlat: ShortHairShortFlat,
+   ShortHairShortRound: ShortHairShortRound,
+   ShortHairShortWaved: ShortHairShortWaved,
+   ShortHairSides: ShortHairSides,
+   ShortHairTheCaesar: ShortHairTheCaesar,
+   ShortHairTheCaesarSidePart: ShortHairTheCaesarSidePart,
 };
