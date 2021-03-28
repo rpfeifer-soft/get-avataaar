@@ -5,6 +5,7 @@ import { id2svg, props2svg, rand2svg, id2json, props2json, rand2json } from "./a
 import swStats from "swagger-stats";
 import compression from "compression";
 import fs from "fs";
+import { argv } from "process";
 
 function log(msg) {
    console.log(moment().format("DD.MM. HH:mm:ss.SSS") + ":", msg);
@@ -78,6 +79,7 @@ app.get("/test", (req, res) => {
    });
 });
 
-app.listen(3000, () => {
-   log(`Waiting to serve avataars on port 3000`);
+const port = +argv[2];
+app.listen(port, () => {
+   log(`Waiting to serve avataars on port ${port}`);
 });

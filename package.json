@@ -9,7 +9,7 @@
    "dockerAccount": "rpfeifer/docker-image",
    "githubAccount": "https://github.com/rpfeifer-soft",
    "scripts": {
-      "start": "node index.js",
+      "start": "node index.js 3000 & node index.js 3001",
       "publish": "docker build . --file Dockerfile --no-cache --tag ${npm_package_dockerAccount}:${npm_package_appid} && docker push ${npm_package_dockerAccount}:${npm_package_appid}",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
