@@ -2,7 +2,6 @@ import moment from "moment";
 import express from "express";
 import svg2png from "./svg2png.js";
 import { id2svg, props2svg, rand2svg, id2json, props2json, rand2json } from "./avataaar/tool.js";
-import swStats from "swagger-stats";
 import compression from "compression";
 import fs from "fs";
 import { argv } from "process";
@@ -26,21 +25,12 @@ async function sendAsPng(req, res, svg, size) {
 
 const app = express();
 
-// Enable swagger-stats middleware in express app, passing swagger specification as option
-app.use(
-   swStats.getMiddleware({
-      name: "avatar",
-   })
-);
-
 app.use(compression());
 
 app.get("/json", (req, res) => {
    let json = false;
    if (req.query.id) {
       json = id2json(req.query.id);
-   } else if (req.query.id === "") {
-      json = rand2json();
    } else {
       json = props2json(req.query);
    }
@@ -52,8 +42,6 @@ app.get("/svg", (req, res) => {
    let svg = false;
    if (req.query.id) {
       svg = id2svg(req.query.id);
-   } else if (req.query.id === "") {
-      svg = rand2svg();
    } else {
       svg = props2svg(req.query);
    }
@@ -64,11 +52,25 @@ app.get("/(:size([0-9]+)).png", (req, res) => {
    let svg = false;
    if (req.query.id) {
       svg = id2svg(req.query.id);
-   } else if (req.query.id === "") {
-      svg = rand2svg();
    } else {
       svg = props2svg(req.query);
    }
+   sendAsPng(req, res, svg, +req.params.size);
+});
+
+app.get("/random/json", (req, res) => {
+   let json = rand2json();
+   res.contentType("application/json");
+   res.send(JSON.stringify(json));
+});
+
+app.get("/random/svg", (req, res) => {
+   let svg = rand2svg();
+   sendAsSvg(req, res, svg);
+});
+
+app.get("/random/(:size([0-9]+)).png", (req, res) => {
+   let svg = rand2svg();
    sendAsPng(req, res, svg, +req.params.size);
 });
 
